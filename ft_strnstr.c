@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 11:48:46 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 11:03:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/01 11:08:45 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			return (0);
 		if (big[i] == little[0])
 		{
-			if (ft_strncmp(big + i, little, little_len + 1) == 0)
+			if (ft_strncmp(big + i, little, little_len) == 0)
 				return ((char*)big + i);
 		}
 		i++;

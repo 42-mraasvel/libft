@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/24 19:18:03 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/10/31 10:22:40 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/11/01 21:14:01 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,6 @@ OBJ = $(SRC:.c=.o)
 .PHONY: all clean fclean re
 all: $(LIBNAME)
 
-so: $(OBJ) $(BONUS_OBJ)
-	gcc -shared $^ -o libft.so
-
 libft.a: $(OBJ)
 	ar rc $(LIBNAME) $^
 %.o: %.c
@@ -46,7 +43,5 @@ fclean: clean
 	rm -f $(LIBNAME)
 re: fclean all
 
-
-# BONUS
 bonus:
 	$(MAKE) WITH_BONUS=1 all

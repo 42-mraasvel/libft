@@ -6,12 +6,11 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 09:58:14 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/10/27 10:34:40 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/01 11:23:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 static size_t	ft_numlen(int n)
 {

@@ -6,12 +6,11 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 11:23:35 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/10/27 11:47:16 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/01 11:23:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 static void	ft_putnbr_fd_output(unsigned int n, int fd)
 {

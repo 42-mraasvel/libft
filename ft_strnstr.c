@@ -1,0 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strnstr.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/10/26 11:48:46 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/10/31 21:05:16 by mraasvel      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include "libft.h"
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	i;
+	size_t	little_len;
+
+	if (*little == 0)
+		return ((char*)big);
+	if (len == 0)
+		return (0);
+	i = 0;
+	little_len = ft_strlen(little);
+	while (i < len && big[i] != 0)
+	{
+		if (big[i] == little[0])
+		{
+			if (ft_strncmp(big + i, little, little_len) == 0)
+				return ((char*)big + i);
+		}
+		i++;
+	}
+	return (0);
+}

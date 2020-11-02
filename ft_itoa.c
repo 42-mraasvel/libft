@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 09:58:14 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 18:09:57 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/02 10:19:53 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char			*ft_itoa(int n)
 	unsigned int	number;
 
 	len = ft_numlen(n);
-	nbr_string = ft_calloc(len + 1, 1);
+	nbr_string = (char*)ft_calloc(len + 1, 1);
 	if (nbr_string == 0)
 		return (0);
 	if (n < 0)

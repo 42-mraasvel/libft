@@ -23,7 +23,7 @@ BONUS_SRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 ifdef WITH_BONUS
-SRC = $(NORM_SRC) $(BONUS_SRC)
+SRC = $(BONUS_SRC)
 else
 SRC = $(NORM_SRC)
 endif
@@ -33,7 +33,7 @@ OBJ = $(SRC:.c=.o)
 all: $(LIBNAME)
 
 libft.a: $(OBJ)
-	ar rc $(LIBNAME) $^
+	ar rcs $(LIBNAME) $^
 %.o: %.c
 	$(CC) $(CFLAGS) $<
 

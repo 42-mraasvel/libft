@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/28 16:35:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/02 18:51:14 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/03 12:11:27 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*))
 
 	if (lst == 0 || f == 0 || del == 0)
 		return (0);
-	start = ft_lstnew((*f)(lst->content));
-	if (start == 0)
-		return (0);
-	lst = lst->next;
+	start = 0;
 	while (lst != 0)
 	{
 		new = ft_lstnew((*f)(lst->content));
@@ -31,7 +28,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*))
 			ft_lstclear(&start, del);
 			return (0);
 		}
-		ft_lstadd_back(&start, new);
+		if (new->content == 0)
+			ft_lstdelone(new, (void*)0);
+		else
+			ft_lstadd_back(&start, new);
 		lst = lst->next;
 	}
 	return (start);

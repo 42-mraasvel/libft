@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 12:56:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/10/31 21:19:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/02 18:38:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			ft_atoi(const char *nptr)
 	if (nptr[i] == '+' || nptr[i] == '-')
 		i++;
 	nbr = 0;
-	while (nptr[i] != 0 && nptr[i] >= '0' && nptr[i] <= '9')
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		nbr = (nbr * 10) + (nptr[i] - '0');
 		i++;

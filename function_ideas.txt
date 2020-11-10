@@ -1,0 +1,20 @@
+Useful Libft Function Ideas
+
+FT_FREE:
+	void	ft_free(int count, ...);
+
+	DESCRIPTION:
+		Takes "count" pointers and frees them all.
+		Useful for when you want to free multiple pointers at the same time.
+
+Integer Conversion Functions:
+	LongToAscii
+		char	*ft_ltoa(long nbr);
+	UIntToAscii
+		char	*ft_uitoa(unsigned int nbr);
+	ULongToAscii
+		char	*ft_ultoa(unsigned long nbr);
+	ULLongToAscii
+		char	*ft_ulltoa(unsigned long long nbr);
+	PrintULLong
+		int		*ft_put_ullong_fd(unsigned long long nbr, int fd);

@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_isalnum.c                                       :+:    :+:            */
+/*   ft_unumlen.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/26 14:12:39 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 10:47:10 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/13 10:14:00 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/13 10:15:37 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+/*
+** Takes non-negative decimal integer as input.
+** Divides by base to get digit count.
+** Returns digit count for nbr in base-version.
+*/
+
+int	ft_unumlen_base(unsigned long long nbr, int base)
 {
-	if (c >= 'a' && c <= 'z')
-		return (8);
-	if (c >= 'A' && c <= 'Z')
-		return (8);
-	if (c >= '0' && c <= '9')
-		return (8);
-	return (0);
+	int len;
+
+	if (nbr == 0)
+		return (1);
+	len = 0;
+	while (nbr != 0)
+	{
+		nbr = nbr / base;
+		len++;
+	}
+	return (len);
 }

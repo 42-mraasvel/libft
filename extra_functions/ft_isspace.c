@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_isprint.c                                       :+:    :+:            */
+/*   ft_isspace.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/26 14:27:43 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 10:46:34 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/13 17:06:36 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/13 17:13:05 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+int	ft_isspace(int c)
 {
-	if (c > 31 && c < 127)
-		return (16384);
+	if ((c >= 9 && c <= 13) || c == ' ')
+		return (1);
 	return (0);
 }

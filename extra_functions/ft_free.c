@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_isalpha.c                                       :+:    :+:            */
+/*   ft_free.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/26 13:48:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 10:47:00 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/13 11:17:24 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/13 11:18:08 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+#include <stdlib.h>
+#include <stdarg.h>
+
+void	ft_free(int cnt, ...)
 {
-	if (c >= 'a' && c <= 'z')
-		return (1024);
-	if (c >= 'A' && c <= 'Z')
-		return (1024);
-	return (0);
+	va_list	start;
+
+	va_start(start, cnt);
+	while (cnt > 0)
+	{
+		free(va_arg(start, void*));
+		cnt--;
+	}
+	va_end(start);
 }

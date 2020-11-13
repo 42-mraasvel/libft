@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_isdigit.c                                       :+:    :+:            */
+/*   ft_strlcpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/26 14:05:54 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 10:46:33 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/10/25 17:24:15 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/13 17:05:51 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include <stddef.h>
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	if (c >= '0' && c <= '9')
-		return (2048);
-	return (0);
+	size_t	i;
+
+	i = 0;
+	if (size != 0 && dst != src)
+	{
+		while (i < size - 1 && src[i] != 0)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = 0;
+	}
+	while (src[i] != 0)
+		i++;
+	return (i);
 }

@@ -7,14 +7,26 @@ FT_FREE:
 		Takes "count" pointers and frees them all.
 		Useful for when you want to free multiple pointers at the same time.
 
-Integer Conversion Functions:
+Integer Conversion Functions: They can all have a "precision" parameter. (min num digits to print)
 	LongToAscii
 		char	*ft_ltoa(long nbr);
 	UIntToAscii
-		char	*ft_uitoa(unsigned int nbr);
+		char	*ft_utoa(unsigned int nbr);
 	ULongToAscii
-		char	*ft_ultoa(unsigned long nbr);
+		char	*ft_lutoa(unsigned long nbr);
 	ULLongToAscii
-		char	*ft_ulltoa(unsigned long long nbr);
+		char	*ft_llutoa(unsigned long long nbr);
 	PrintULLong
-		int		*ft_put_ullong_fd(unsigned long long nbr, int fd);
+		int		ft_put_llu_fd(unsigned long long nbr, int fd);
+	printLL
+		int		ft_put_numll(long long nbr);
+	printhex
+		int		ft_put_numhex(unsigned long long nbr);
+
+STRTOUPPER:
+	void	ft_strtotupper(char *str);
+		Changes all chars in string to uppercase.
+
+BaseNumLen:
+	int		numlen_base(unsigned long long nbr, int base);
+		Returns the length of the number for that base. (positive only).

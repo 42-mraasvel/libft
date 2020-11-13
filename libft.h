@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/10/29 10:20:21 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/13 17:08:33 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stddef.h>
+# include <unistd.h>
 
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
@@ -69,14 +70,31 @@ typedef struct		s_list
 ** The bonus functions
 */
 t_list				*ft_lstnew(void *content);
-void				ft_lstadd_front(t_list **lst, t_list *new);
+void				ft_lstadd_front(t_list **lst, t_list *nw);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
-void				ft_lstadd_back(t_list **lst, t_list *new);
+void				ft_lstadd_back(t_list **lst, t_list *nw);
 void				ft_lstdelone(t_list *lst, void (*del)(void*));
 void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void*));
 t_list				*ft_lstmap(t_list *lst,
 					void *(*f)(void*), void (*del)(void*));
+
+/*
+** Additional functions
+*/
+
+ssize_t	ft_putnofc(size_t n, unsigned char c);
+void	ft_free(int cnt, ...);
+int		ft_isspace(int c);
+
+/*
+** Number functions
+*/
+
+int		ft_unumlen_base(unsigned long long nbr, int base);
+int		ft_numlen_base(long long nbr, int base);
+int		ft_putll(long long nbr, int precision);
+int		ft_putllu(unsigned long long nbr, int precision);
 
 #endif

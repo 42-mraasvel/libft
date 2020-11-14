@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/13 17:08:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/14 14:03:23 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,17 @@ t_list				*ft_lstmap(t_list *lst,
 ** Additional functions
 */
 
-ssize_t	ft_putnofc(size_t n, unsigned char c);
-void	ft_free(int cnt, ...);
-int		ft_isspace(int c);
+ssize_t				ft_putnofc(size_t n, unsigned char c);
+void				ft_free(int cnt, ...);
+int					ft_isspace(int c);
 
 /*
 ** Number functions
 */
 
-int		ft_unumlen_base(unsigned long long nbr, int base);
-int		ft_numlen_base(long long nbr, int base);
-int		ft_putll(long long nbr, int precision);
-int		ft_putllu(unsigned long long nbr, int precision);
+int					ft_unumlen_base(unsigned long long nbr, int base);
+int					ft_numlen_base(long long nbr, int base);
+int					ft_putll(long long nbr, int precision);
+int					ft_putllu(unsigned long long nbr, int precision);
 
 #endif

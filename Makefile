@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/13 10:06:53 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/11/13 10:31:26 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/11/13 21:45:52 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,3 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 re: fclean all
-
-woo:
-	echo $(SRC)

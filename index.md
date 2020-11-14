@@ -28,3 +28,15 @@ Extra Functions:
 			Outputs any value that fits inside unsigned long long.
 			Prints a minimum of precision chars.
 			Precedes printed nbr with leading zeros if precision flag is given.
+	ft_putstr_p.c:
+		ssize_t	ft_putstr_p(char *str, ssize_t precision);
+		Description:
+			Writes at most precision chars.
+			Returns bytes written or -1 on error.
+	ft_putllu_base.c:
+		int	ft_putllu_base(unsigned long long nbr, int base, int precision, int upcase);
+		Description:
+			Writes nbr in base: uses 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
+			In lowercase if upcase == 0.
+			If precision > numlen; writes (precision - numlen) leading zero's.
+			Return: bytes written or -1 on failure.

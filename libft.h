@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/14 14:03:23 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/14 22:17:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct		s_list
 /*
 ** The bonus functions
 */
+
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **lst, t_list *nw);
 int					ft_lstsize(t_list *lst);
@@ -85,6 +86,7 @@ t_list				*ft_lstmap(t_list *lst,
 */
 
 ssize_t				ft_putnofc(size_t n, unsigned char c);
+ssize_t				ft_putstr_p(char *str, ssize_t precision);
 void				ft_free(int cnt, ...);
 int					ft_isspace(int c);
 
@@ -96,5 +98,7 @@ int					ft_unumlen_base(unsigned long long nbr, int base);
 int					ft_numlen_base(long long nbr, int base);
 int					ft_putll(long long nbr, int precision);
 int					ft_putllu(unsigned long long nbr, int precision);
+int					ft_putllu_base(unsigned long long nbr,
+					int base, int precision, int upcase);
 
 #endif

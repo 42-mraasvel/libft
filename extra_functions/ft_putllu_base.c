@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 22:03:47 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/14 22:22:53 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/15 20:28:08 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static int	output_llu_base(unsigned long long nbr, int base, char *base_chars)
 /*
 ** Prints number in given base.
 ** Will use alphabet up to base 36.
+** 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ** Upcase = 0 means lowercase, otherwise print uppercase.
 ** Minimum of precision chars printed.
 ** If numlen < precision: print leading zero's.
@@ -80,5 +81,5 @@ int			ft_putllu_base(unsigned long long nbr,
 	if (output_llu_base(nbr, base, base_chars) == -1)
 		return (-1);
 	free(base_chars);
-	return (numlen < precision ? numlen : precision);
+	return (numlen > precision ? numlen : precision);
 }

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/13 10:18:24 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/14 14:03:44 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/15 12:00:44 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,8 @@
 
 static int	ft_tenth_putnofc(size_t n, unsigned char c)
 {
-	char	*buffer;
+	char	buffer[10000];
 
-	buffer = (char*)malloc(10000 * sizeof(char));
-	if (buffer == 0)
-		return (-1);
 	if (write(1, buffer, n % 10000) == -1)
 		return (-1);
 	ft_memset(buffer, (int)c, 10000);
@@ -30,7 +27,6 @@ static int	ft_tenth_putnofc(size_t n, unsigned char c)
 			return (-1);
 		n -= 10000;
 	}
-	free(buffer);
 	return (0);
 }
 

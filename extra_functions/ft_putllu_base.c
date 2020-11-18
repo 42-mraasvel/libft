@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 22:03:47 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/14 22:22:53 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/15 16:33:00 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,5 @@ int			ft_putllu_base(unsigned long long nbr,
 	if (output_llu_base(nbr, base, base_chars) == -1)
 		return (-1);
 	free(base_chars);
-	return (numlen < precision ? numlen : precision);
+	return (numlen > precision ? numlen : precision);
 }

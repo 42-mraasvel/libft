@@ -29,7 +29,7 @@ Extra Functions:
 			Prints a minimum of precision chars.
 			Precedes printed nbr with leading zeros if precision flag is given.
 	ft_putstr_p.c:
-		ssize_t	ft_putstr_p(char *str, ssize_t precision);
+		ssize_t	ft_putstr_p(char \*str, ssize_t precision);
 		Description:
 			Writes at most precision chars.
 			Returns bytes written or -1 on error.
@@ -40,3 +40,13 @@ Extra Functions:
 			In lowercase if upcase == 0.
 			If precision > numlen; writes (precision - numlen) leading zero's.
 			Return: bytes written or -1 on failure.
+	ft_get_tenth_exp.c
+		int	ft_get_tenth_exp(double value);
+		Description:
+			Divide or multiply value by 10 until it is in the range of 1 <= |value| < 10.
+			Useful for scientific notation of a number, I used it to generate floating point digits.
+	ft_exponent.c
+		double	ft_exponent(double x, double pow);
+		Description:
+			Returns x^pow.
+			pow can be negative, not fractional. I have no idea what to do with fractional exponents.

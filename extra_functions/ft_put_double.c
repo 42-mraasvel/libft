@@ -6,11 +6,10 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:18:18 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/19 13:49:06 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/19 18:56:50 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> //rm
 #include <unistd.h>
 #include <stdlib.h>
 #include "ft_double.h"
@@ -66,6 +65,7 @@ static double	extract_integers(double number, int pow, char *string)
 }
 
 /*
+** If the exponent > 52, there is no fractional part.
 ** Goal: extract precision fractionals from number.
 ** input number will look like: 0.1237....
 ** 1. Multiply by 10.
@@ -75,10 +75,20 @@ static double	extract_integers(double number, int pow, char *string)
 ** Return value: remaining fraction of number, to be used for rounding.
 */
 
-static double	extract_fraction(double number, int precision, char *string)
+static double	extract_fraction(double number, int exponent,
+				int precision, char *string)
 {
 	int	result;
 
+	if (exponent - 1023 > 51)
+	{
+		while (precision > 0)
+		{
+			*string = '0';
+			string++;
+			precision--;
+		}
+	}
 	while (precision > 0)
 	{
 		number *= 10;
@@ -98,7 +108,7 @@ static double	extract_fraction(double number, int precision, char *string)
 ** I chose string representation because rounding was easier.
 */
 
-static char		*ft_dtoa(double number, int precision)
+static char		*ft_dtoa(double number, int precision, int exponent)
 {
 	char	*string;
 	int		size;
@@ -116,10 +126,11 @@ static char		*ft_dtoa(double number, int precision)
 	if (precision != 0)
 	{
 		string[size - precision - 2] = '.';
-		number = extract_fraction(number, precision,
+		number = extract_fraction(number, exponent, precision,
 		string + size - precision - 1);
 	}
-	ft_round_double(string, number, size - 2);
+	if (exponent - 1023 < 51)
+		string = ft_round_double(string, number, size - 2, precision);
 	return (string);
 }
 
@@ -137,12 +148,12 @@ int				ft_put_double(double number, int precision)
 	if (nbr.bitfield.sign == 1)
 		if (write(1, "-", 1) == -1)
 			return (-1);
-	string = ft_dtoa(number, precision);
+	string = ft_dtoa(number, precision, nbr.bitfield.exponent);
 	if (string == 0)
 		return (-1);
 	len = ft_strlen(string);
-	// if (write(1, string, len) == -1)
-	// 	len = -1;
+	if (write(1, string, len) == -1)
+		len = -1;
 	free(string);
 	return (len);
 }

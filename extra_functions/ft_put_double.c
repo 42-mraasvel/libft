@@ -6,11 +6,11 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:18:18 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/19 12:02:23 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/19 13:49:06 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> //remove
+#include <stdio.h> //rm
 #include <unistd.h>
 #include <stdlib.h>
 #include "ft_double.h"
@@ -31,6 +31,13 @@ static int		inf_nan(t_double nbr)
 		return (-1);
 	return (3 + nbr.bitfield.sign);
 }
+
+/*
+** Extract all integers to the left of the radix point.
+** Input: 123.456
+** Result: put "123" in string, return: 0.456.
+** pow = length of the integer (123.456 would be 3)
+*/
 
 static double	extract_integers(double number, int pow, char *string)
 {
@@ -58,13 +65,40 @@ static double	extract_integers(double number, int pow, char *string)
 	return (number);
 }
 
+/*
+** Goal: extract precision fractionals from number.
+** input number will look like: 0.1237....
+** 1. Multiply by 10.
+** 2. Typecast to int to seperate this number.
+** 3. subtract the typecasted result from number.
+** 4. Repeat step 1-3 precision times.
+** Return value: remaining fraction of number, to be used for rounding.
+*/
+
 static double	extract_fraction(double number, int precision, char *string)
 {
+	int	result;
 
+	while (precision > 0)
+	{
+		number *= 10;
+		result = (int)number;
+		number -= result;
+		if (result < 0)
+			result = -result;
+		*string = result + '0';
+		string++;
+		precision--;
+	}
+	return (number);
 }
 
+/*
+** Convert double to string representation.
+** I chose string representation because rounding was easier.
+*/
 
-static char		*put_double_in_string(double number, int precision)
+static char		*ft_dtoa(double number, int precision)
 {
 	char	*string;
 	int		size;
@@ -82,8 +116,10 @@ static char		*put_double_in_string(double number, int precision)
 	if (precision != 0)
 	{
 		string[size - precision - 2] = '.';
-		number = extract_fraction(number, precision, string + pow + 2);
+		number = extract_fraction(number, precision,
+		string + size - precision - 1);
 	}
+	ft_round_double(string, number, size - 2);
 	return (string);
 }
 
@@ -91,6 +127,7 @@ int				ft_put_double(double number, int precision)
 {
 	t_double	nbr;
 	char		*string;
+	int			len;
 
 	nbr.value = number;
 	if (precision < 0)
@@ -100,10 +137,12 @@ int				ft_put_double(double number, int precision)
 	if (nbr.bitfield.sign == 1)
 		if (write(1, "-", 1) == -1)
 			return (-1);
-	string = put_double_in_string(number, precision);
+	string = ft_dtoa(number, precision);
 	if (string == 0)
 		return (-1);
-	ft_putstr_fd(string, 1);
+	len = ft_strlen(string);
+	// if (write(1, string, len) == -1)
+	// 	len = -1;
 	free(string);
-	return (0);
+	return (len);
 }

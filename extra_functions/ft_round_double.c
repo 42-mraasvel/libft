@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test.c                                             :+:    :+:            */
+/*   ft_round_double.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/19 10:52:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/19 13:49:55 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/19 13:23:06 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/19 13:49:47 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <float.h>
-#include <string.h>
-#include <stdio.h>
+#include <stdio.h> // rm
 #include "libft.h"
 
-int	main(void)
+int	ft_round_double(char *string, double number, int end)
 {
-	double	d;
-
-	// d = 199999.9964567;
-	d = 0.00000294;
-	ft_put_double(d, -1);
-	write(1, "\n", 1);
+	// (void)string;
+	(void)number;
+	// (void)end;
+	printf("the character: %c\n", string[end]);
+	printf("the number: %f\n", number);
 	return (0);
 }

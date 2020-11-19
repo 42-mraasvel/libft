@@ -1,1 +1,1 @@
-make && gcc test.c -L. -lft && ./a.out
+make && gcc -O0 -g -fsanitize=address test.c -L. -lft && ./a.out

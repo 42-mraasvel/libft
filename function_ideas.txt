@@ -10,10 +10,6 @@ Integer Conversion Functions: They can all have a "precision" parameter. (min nu
 		char	*ft_lutoa(unsigned long nbr);
 	ULLongToAscii
 		char	*ft_llutoa(unsigned long long nbr);
-Integer printing functions:
-	ft_put_double
-		int		ft_put_double(double nbr, int precision);
-			Write double
 STRTOUPPER:
 	void	ft_strtotupper(char *str);
 		Changes all chars in string to uppercase.

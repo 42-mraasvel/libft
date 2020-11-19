@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 13:23:06 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/19 21:02:38 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/19 22:33:31 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ char		*ft_round_double(char *string, double number, int end, int pr)
 {
 	int	compare;
 
+	while (number > 1 || number < -1)
+		number = number / 10;
 	compare = (int)(number * 10);
 	if (compare < 5)
 		return (string);

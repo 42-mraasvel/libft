@@ -1,11 +1,5 @@
 Useful Libft Function Ideas
 
-FT_FREE:
-	void	ft_free(int count, ...);
-
-	DESCRIPTION:
-		Takes "count" pointers and frees them all.
-		Useful for when you want to free multiple pointers at the same time.
 
 Integer Conversion Functions: They can all have a "precision" parameter. (min num digits to print)
 	LongToAscii
@@ -16,17 +10,11 @@ Integer Conversion Functions: They can all have a "precision" parameter. (min nu
 		char	*ft_lutoa(unsigned long nbr);
 	ULLongToAscii
 		char	*ft_llutoa(unsigned long long nbr);
-	PrintULLong
-		int		ft_put_llu_fd(unsigned long long nbr, int fd);
-	printLL
-		int		ft_put_numll(long long nbr);
-	printhex
-		int		ft_put_numhex(unsigned long long nbr);
-
+Integer printing functions:
+	ft_put_double
+		int		ft_put_double(double nbr, int precision);
+			Write double
 STRTOUPPER:
 	void	ft_strtotupper(char *str);
 		Changes all chars in string to uppercase.
-
-BaseNumLen:
-	int		numlen_base(unsigned long long nbr, int base);
-		Returns the length of the number for that base. (positive only).
+	void	ft_strtolower(char *str);

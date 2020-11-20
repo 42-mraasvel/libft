@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/20 09:47:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/20 10:02:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/20 11:05:10 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,13 @@ static int	inf_nan(t_double nbr)
 	return (3 + nbr.bitfield.sign);
 }
 
-static int	output_sn(char *digits, int pow)
+static int	output_sn(char *digits, int pow, int hash)
 {
 	if (ft_putstr(digits) == -1)
 		return (-1);
+	if (hash == 1)
+		if (write(1, ".", 1) == -1)
+			return (-1);
 	if (write(1, "e", 1) == -1)
 		return (-1);
 	if (pow < 0)
@@ -51,7 +54,7 @@ static int	output_sn(char *digits, int pow)
 	return (ft_putll(pow, 0));
 }
 
-int			ft_putdouble_sn(double unit, int precision)
+int			ft_putdouble_sn(double unit, int precision, int hash)
 {
 	t_double	nbr;
 	char		*digits;
@@ -60,6 +63,8 @@ int			ft_putdouble_sn(double unit, int precision)
 	nbr.value = unit;
 	if (precision < 0)
 		precision = 6;
+	if (precision != 0)
+		hash = 0;
 	if (nbr.bitfield.exponent == 2047)
 		return (inf_nan(nbr));
 	if (nbr.bitfield.sign == 1)
@@ -69,7 +74,7 @@ int			ft_putdouble_sn(double unit, int precision)
 	digits = extract_n_digits_from_double(nbr.value, precision + 1, 1);
 	if (precision != 0)
 		digits = insert_radix_point(digits, 0);
-	if (output_sn(digits, pow) == -1)
+	if (output_sn(digits, pow, hash) == -1)
 	{
 		free(digits);
 		return (-1);

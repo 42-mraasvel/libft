@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:52:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/20 10:03:31 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/20 14:06:05 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@
 
 int	main(void)
 {
-	double	d;
-	char	*string;
-	int pow;
+	char	*strings;
+	char	*str = "abcdef";
 
-	d = 0.000345;
-	pow = ft_get_tenth_exp(d);
-	printf("e: %.8e\n%d\n", d, pow);
-	ft_putdouble_sn(d, 8);
-	free(string);
+	strings = ft_join_n_strings(6, "1", "2", "3", "4", "56", str);
+	if (strings == NULL)
+		return (-1);
+	printf("%s\n", strings);
+	free(strings);
 	return (0);
 }

@@ -6,13 +6,33 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 22:15:12 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/19 22:40:37 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/20 09:52:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_double.h"
 #include "libft.h"
+
+char			*insert_radix_point(char *digits, int pow)
+{
+	char	*result;
+	int		len;
+
+	len = ft_strlen(digits);
+	result = (char*)malloc((len + 2) * sizeof(char));
+	if (result == NULL)
+		return (NULL);
+	result[len + 1] = '\0';
+	if (pow <= 0 || pow > len)
+		pow = 0;
+	pow++;
+	result[pow] = '.';
+	ft_memcpy(result, digits, pow);
+	ft_memcpy(result + pow + 1, digits + pow, len - pow);
+	free(digits);
+	return (result);
+}
 
 static double	extract_n_digits(double unit, char *digits,
 				int power, unsigned int n)
@@ -35,12 +55,19 @@ static double	extract_n_digits(double unit, char *digits,
 	return (unit);
 }
 
-char			*extract_n_digits_from_double(double unit, unsigned int n)
+/*
+** If signif != 0, get significant digits only.
+*/
+
+char			*extract_n_digits_from_double(double unit,
+				unsigned int n, int signif)
 {
 	char	*digits;
 	int		power;
 
 	power = ft_get_tenth_exp(unit);
+	if (power < 0 && signif == 0)
+		power = 0;
 	digits = (char*)malloc((n + 1) * sizeof(char));
 	if (digits == NULL)
 		return (NULL);

@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test.c                                             :+:    :+:            */
+/*   ft_putstr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/19 10:52:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/20 10:03:31 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/20 09:57:39 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/20 09:58:13 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <float.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "libft.h"
+#include <unistd.h>
 
-int	main(void)
+int	ft_putstr(char *str)
 {
-	double	d;
-	char	*string;
-	int pow;
+	int	i;
 
-	d = 0.000345;
-	pow = ft_get_tenth_exp(d);
-	printf("e: %.8e\n%d\n", d, pow);
-	ft_putdouble_sn(d, 8);
-	free(string);
-	return (0);
+	i = 0;
+	while (str[i] != 0)
+		i++;
+	return (write(1, str, i));
 }

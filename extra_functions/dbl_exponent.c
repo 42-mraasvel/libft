@@ -15,6 +15,8 @@ int	dbl_exponent(double nbr)
 	int	e;
 
 	e = 0;
+	if (nbr == 0)
+		return (0);
 	while (nbr < 1 && nbr > -1)
 	{
 		nbr *= 10;

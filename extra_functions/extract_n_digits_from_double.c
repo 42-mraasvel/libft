@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 22:15:12 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/20 09:52:30 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/21 16:55:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static double	extract_n_digits(double unit, char *digits,
 	double	tens;
 	int		result;
 
-	tens = ft_exponent(10, power);
+	tens = ft_pow(10, power);
 	while (n > 0)
 	{
 		result = (int)(unit / tens);
@@ -65,7 +65,7 @@ char			*extract_n_digits_from_double(double unit,
 	char	*digits;
 	int		power;
 
-	power = ft_get_tenth_exp(unit);
+	power = dbl_exponent(unit);
 	if (power < 0 && signif == 0)
 		power = 0;
 	digits = (char*)malloc((n + 1) * sizeof(char));

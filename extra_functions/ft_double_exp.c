@@ -1,20 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test.c                                             :+:    :+:            */
+/*   ft_double_exp.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/19 10:52:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/21 17:01:04 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/21 16:52:45 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/21 16:52:46 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <float.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "libft.h"
 
 int	dbl_exponent(double nbr)
 {
@@ -32,16 +26,4 @@ int	dbl_exponent(double nbr)
 		e++;
 	}
 	return (e);
-}
-
-int	main(void)
-{
-	unsigned long long nbr;
-	char *result;
-
-	nbr = 1;
-	result = ft_llutoa(nbr, 5);
-	printf("result: %s\n", result);
-	free(result);
-	return (0);
 }

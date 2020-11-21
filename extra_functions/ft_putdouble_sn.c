@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/20 09:47:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/20 11:05:10 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/21 16:53:54 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			ft_putdouble_sn(double unit, int precision, int hash)
 	if (nbr.bitfield.sign == 1)
 		if (write(1, "-", 1) == -1)
 			return (-1);
-	pow = ft_get_tenth_exp(unit);
+	pow = dbl_exponent(unit);
 	digits = extract_n_digits_from_double(nbr.value, precision + 1, 1);
 	if (precision != 0)
 		digits = insert_radix_point(digits, 0);

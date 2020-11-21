@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:18:18 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/19 18:56:50 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/21 16:54:25 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static double	extract_integers(double number, int pow, char *string)
 		*string = '0';
 		return (number);
 	}
-	tens = ft_exponent(10, pow);
+	tens = ft_pow(10, pow);
 	while (pow >= 0)
 	{
 		c = (int)(number / tens);
@@ -114,7 +114,7 @@ static char		*ft_dtoa(double number, int precision, int exponent)
 	int		size;
 	int		pow;
 
-	pow = ft_get_tenth_exp(number);
+	pow = dbl_exponent(number);
 	if (pow <= 0)
 		size = 1 + (precision > 0 ? precision + 2 : 1);
 	else

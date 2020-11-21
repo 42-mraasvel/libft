@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_get_tenth_exp.c                                 :+:    :+:            */
+/*   ft_numlen_double.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/18 17:02:41 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/19 13:40:27 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/21 10:16:11 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/21 11:52:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_double.h"
-
-int	ft_get_tenth_exp(double value)
+int	ft_numlen_dbl(double num)
 {
-	t_double	nbr;
-	int			exp;
+	int	len;
 
-	exp = 0;
-	nbr.value = value;
-	if (nbr.bitfield.exponent == 0 && nbr.bitfield.mantissa == 0)
-		return (0);
-	while (value > 9 || value < -9)
+	len = 0;
+	while (num >= 10 || num < -10)
 	{
-		value = value / 10;
-		exp++;
+		len++;
+		num = num / 10;
 	}
-	while (value < 1 && value > -1)
-	{
-		value = value * 10;
-		exp--;
-	}
-	return (exp);
+	return (len + 1);
 }

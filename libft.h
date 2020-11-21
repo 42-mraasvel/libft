@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/20 14:04:03 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/21 11:53:15 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int					ft_putdouble_sn(double unit, int precision, int hash);
 ** math functions
 */
 
-double				ft_exponent(double x, double pow);
-int					ft_get_tenth_exp(double value);
+double				ft_pow(double x, double y);
+int					ft_numlen_dbl(double num);
 
 #endif

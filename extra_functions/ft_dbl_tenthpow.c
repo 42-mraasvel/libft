@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_double_exp.c                                    :+:    :+:            */
+/*   ft_dbl_tenthpow.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/21 16:52:45 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/21 16:52:46 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/22 12:08:47 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	dbl_exponent(double nbr)
+int	ft_dbl_tenthpow(double nbr)
 {
 	int	e;
 

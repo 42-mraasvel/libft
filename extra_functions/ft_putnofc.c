@@ -16,17 +16,21 @@
 
 static int	ft_tenth_putnofc(size_t n, unsigned char c)
 {
-	char	buffer[10000];
+	char	*buffer;
 
-	if (write(1, buffer, n % 10000) == -1)
+	buffer = (char*)malloc(10000 * sizeof(char));
+	if (buffer == NULL)
 		return (-1);
 	ft_memset(buffer, (int)c, 10000);
+	if (write(1, buffer, n % 10000) == -1)
+		return (-1);
 	while (n > 10000)
 	{
 		if (write(1, buffer, 10000) == -1)
 			return (-1);
 		n -= 10000;
 	}
+	free(buffer);
 	return (0);
 }
 

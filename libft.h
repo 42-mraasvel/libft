@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/22 12:09:59 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/27 17:39:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int					put_binary_representation_of_area(void *area, size_t n);
 int					put_hex_representation_of_area(void *area, size_t n);
 int					ft_putstr(char *str);
 char				*ft_join_n_strings(int cnt, ...);
+char				**ft_split_set(const char *src, const char *set);
 
 /*
 ** Number functions

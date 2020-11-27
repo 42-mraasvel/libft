@@ -3,4 +3,5 @@ a.out
 libft.a
 libft.so
 for-norme/
-a.out.dSYM/
+a.out.dSYM/a.out
+.vscode

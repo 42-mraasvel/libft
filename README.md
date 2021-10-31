@@ -1,10 +1,6 @@
-# H1
-## H2
-### H3
-
 # Project Description
 
-Library containing reimplementations of many C stdlib functions and others.
+Library containing reimplementations of many C stdlib functions and many additional utility functions.
 
 ---
 # Function Index

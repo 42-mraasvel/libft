@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_isspace.c                                       :+:    :+:            */
+/*   find_first_of.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/13 17:06:36 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/13 17:13:05 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/10/31 16:15:21 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/10/31 16:23:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(int c)
+#include "libft.h"
+
+char	*find_first_of(char *s, int (*is_function)(int))
 {
-	return ((c >= 9 && c <= 13) || c == ' ');
+	while (*s != '\0' && !is_function(*s))
+	{
+		++s;
+	}
+	return (s);
 }

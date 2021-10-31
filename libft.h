@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/03/20 12:39:09 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/10/31 16:22:57 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,12 @@ long long			ft_absll(long long l);
 int					ft_inrange(int num, int min, int max);
 int					ft_inrangef(float num, float min, float max);
 int					ft_inrangell(long long num, long long min, long long max);
+
+/*
+More utility functions
+*/
+
+char				*find_first_not_of(char *s, int (*is_function)(int));
+char				*find_first_of(char *s, int (*is_function)(int));
 
 #endif

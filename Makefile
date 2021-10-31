@@ -30,3 +30,6 @@ fclean: clean
 	$(RM) $(NAME)
 re: fclean
 	$(MAKE) all
+
+.PHONY: bonus
+bonus: $(NAME)

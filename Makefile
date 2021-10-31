@@ -1,57 +1,32 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
-#                                                    +#+                       #
-#    Created: 2020/11/13 10:06:53 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/11/19 22:31:49 by mraasvel      ########   odam.nl          #
-#                                                                              #
-# **************************************************************************** #
+include make_settings/src_files.mk
 
-# names
-NAME = libft.a
-SRC = $(shell find $(SRCDIR) -name "*.c")
-OBJ = $(addprefix $(OBJDIR)/, $(shell basename -a $(SRC:.c=.o)))
+.PHONY: all
+all: $(NAME)
 
-# directories
-OBJDIR = obj
-SRCDIR = main_part extra_functions
-IDIR = .
+# Creating the library
+$(NAME): $(OBJ)
+	@echo Creating: $@
+	@$(LINK) $@ $^
 
-#compilation
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-IFLAGS = -I $(IDIR)
+# Object Files
+$(OBJ): $(ODIR)/%.o: $(SDIR)/%.c Makefile
+	@echo Compiling: $@
+	@mkdir -p $(@D)
+	@$(CC) -c $(CFLAGS) $(IFLAGS) $< -o $@
 
-#VPATH
-VPATH = $(SRCDIR)
+# Header Dependency Rules
+$(DEP): $(DDIR)/%.d: $(SDIR)/%.c
+	@echo Creating Dependency: $@
+	@mkdir -p $(@D)
+	@$(CC) $< -MM -MF $@ -MT $(ODIR)/$*.o $(CFLAGS) $(IFLAGS)
 
-.PHONY: all dependencies clean fclean re
-all: dependencies $(NAME) clear
+-include $(DEP)
 
-dependencies:
-	@mkdir -p obj
-
-$(NAME): $(OBJ) libft.h
-	@echo "\033[032;1m"
-	ar rcs $@ $(OBJ)
-$(OBJDIR)/%.o: %.c
-	$(CC) -o $@ -c $(CFLAGS) $< $(IFLAGS)
-
-clean: red
-	rm -f $(OBJ)
+# Cleanup
+.PHONY: clean fclean re
+clean:
+	$(RM) -r $(TDIR)
 fclean: clean
-	rm -f $(NAME)
-re: fclean all
-
-#colors
-red:
-	@echo -n "\033[031;1m"
-green:
-	@echo -n "\033[032;1m"
-yellow:
-	@echo -n "\033[033;1m"
-clear:
-	@echo -n "\033[0m"
+	$(RM) $(NAME)
+re: fclean
+	$(MAKE) all

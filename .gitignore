@@ -1,7 +1,8 @@
-*.o
-a.out
-libft.a
-libft.so
-for-norme/
-a.out.dSYM/a.out
+.DS_Store
 .vscode
+*.o
+*.a
+*.d
+*.so
+a.out*
+*.out

@@ -6,18 +6,20 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 12:56:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/10/31 16:36:03 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/11/13 13:03:59 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdbool.h>
+#include <stdio.h>
 
 int	ft_atoi(const char *nptr)
 {
 	int	nbr;
 	int	negative;
 
+	negative = false;
 	nptr = find_first_not_of((char *)nptr, ft_isspace);
 	if (*nptr == '+' || *nptr == '-')
 	{

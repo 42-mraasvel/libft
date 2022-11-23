@@ -1,35 +1,13 @@
-include make_settings/src_files.mk
+BUILD_DIR := target
 
-.PHONY: all
-all: $(NAME)
-
-# Creating the library
-$(NAME): $(OBJ)
-	@echo Creating: $@
-	@$(LINK) $@ $^
-
-# Object Files
-$(OBJ): $(ODIR)/%.o: $(SDIR)/%.c Makefile
-	@echo Compiling: $@
-	@mkdir -p $(@D)
-	@$(CC) -c $(CFLAGS) $(IFLAGS) $< -o $@
-
-# Header Dependency Rules
-$(DEP): $(DDIR)/%.d: $(SDIR)/%.c
-	@echo Creating Dependency: $@
-	@mkdir -p $(@D)
-	@$(CC) $< -MM -MF $@ -MT $(ODIR)/$*.o $(CFLAGS) $(IFLAGS)
-
--include $(DEP)
-
-# Cleanup
-.PHONY: clean fclean re
+build: $(BUILD_DIR)
+	cmake --build $(BUILD_DIR)
+$(BUILD_DIR):
+	cmake -B $(BUILD_DIR) -S .
 clean:
-	$(RM) -r $(TDIR)
-fclean: clean
-	$(RM) $(NAME)
-re: fclean
-	$(MAKE) all
+	$(RM) -r $(BUILD_DIR)
 
-.PHONY: bonus
-bonus: $(NAME)
+test: build
+	$(BUILD_DIR)/test/test
+
+.PHONY: build clean test

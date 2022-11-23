@@ -21,20 +21,18 @@ int ft_max(int a, int b);
  */
 
 #define MONOVEC_DECLARATION(Type, Name, FunctionPrefix) \
-struct Name; \
-typedef struct Name Name; \
-Name* FunctionPrefix##_construct(size_t capacity); \
-int FunctionPrefix##_push_back(Name* ptr, Type value); \
-void FunctionPrefix##_destroy(Name* ptr); \
-Type* FunctionPrefix##_get(Name* ptr, size_t index);
-
-#define MONOVEC_DEFINITIONS(Type, Name, FunctionPrefix) \
 typedef struct Name { \
 	size_t length; \
 	size_t capacity; \
 	Type* table; \
 } Name; \
 \
+Name* FunctionPrefix##_construct(size_t capacity); \
+int FunctionPrefix##_push_back(Name* ptr, Type value); \
+void FunctionPrefix##_destroy(Name* ptr); \
+Type* FunctionPrefix##_get(Name* ptr, size_t index);
+
+#define MONOVEC_DEFINITIONS(Type, Name, FunctionPrefix) \
 Name* FunctionPrefix##_construct(size_t capacity) { \
 	Name* x = (Name*)malloc(1 * sizeof(Name)); \
 	if (!x) { \

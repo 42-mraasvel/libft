@@ -1,6 +1,5 @@
 set(NAME ft)
 add_library(${NAME} STATIC
-
 ./mandatory/recoded/ft_isdigit.c
 ./mandatory/recoded/ft_strrchr.c
 ./mandatory/recoded/ft_memset.c
@@ -69,6 +68,7 @@ add_library(${NAME} STATIC
 ./extra/ft_free_split.c
 ./extra/ft_strstr.c
 ./extra/ft_max.c
+./extra/ft_string.c
 ./extra/ft_isspace.c
 ./extra/ft_atoull_base.c
 ./extra/ft_free.c

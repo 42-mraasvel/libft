@@ -81,6 +81,9 @@ Type* FunctionPrefix##_get(Name* ptr, size_t index) { \
 } \
 \
 void FunctionPrefix##_destroy(Name* ptr) { \
+	if (!ptr) { \
+		return; \
+	} \
 	free(ptr->table); \
 	free(ptr); \
 }

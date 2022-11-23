@@ -6,16 +6,17 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2022/11/23 12:33:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2022/11/23 13:47:32 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "monovec.h"
 # include <stddef.h>
 # include <unistd.h>
-# include "monovec.h"
+# include <stdbool.h>
 
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
@@ -155,5 +156,6 @@ More utility functions
 
 char				*find_first_not_of(char *s, int (*is_function)(int));
 char				*find_first_of(char *s, int (*is_function)(int));
+bool ft_starts_with(const char* str, const char* s);
 
 #endif

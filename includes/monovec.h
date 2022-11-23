@@ -17,7 +17,7 @@ int ft_max(int a, int b);
  * -- Result
  * struct VecInt { ... }
  * veci_construct( ... );
- * veci_destruct( ... );
+ * veci_destroy( ... );
  */
 
 #define MONOVEC_DECLARATION(Type, Name, FunctionPrefix) \
@@ -25,7 +25,7 @@ struct Name; \
 typedef struct Name Name; \
 Name* FunctionPrefix##_construct(size_t capacity); \
 int FunctionPrefix##_push_back(Name* ptr, Type value); \
-void FunctionPrefix##_destruct(Name* ptr); \
+void FunctionPrefix##_destroy(Name* ptr); \
 Type* FunctionPrefix##_get(Name* ptr, size_t index);
 
 #define MONOVEC_DEFINITIONS(Type, Name, FunctionPrefix) \

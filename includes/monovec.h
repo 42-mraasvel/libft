@@ -1,6 +1,7 @@
 #ifndef MONOVEC_H
 #define MONOVEC_H
 
+#include "monoquicksort.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -84,6 +85,13 @@ void FunctionPrefix##_destroy(Name* ptr) { \
 	} \
 	free(ptr->table); \
 	free(ptr); \
+} \
+\
+MONO_QUICKSORT_DEFINITION(Type, FunctionPrefix) \
+\
+/* Comparison function: int compare(const Type* a, const Type* b); (See monoquicksort.h for details) */ \
+void FunctionPrefix##_sort_unstable_by(Name* ptr, int (*compare)(Type*, Type*)) { \
+	FunctionPrefix##_quicksort_by(ptr->table, ptr->table + ptr->length, compare); \
 }
 
 #endif /* MONOVEC_H */

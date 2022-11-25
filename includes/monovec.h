@@ -32,7 +32,8 @@ Name* FunctionPrefix##_construct(size_t capacity); \
 int FunctionPrefix##_push_back(Name* ptr, Type value); \
 void FunctionPrefix##_destroy(Name* ptr); \
 Type* FunctionPrefix##_get(Name* ptr, size_t index); \
-void FunctionPrefix##_sort_unstable_by(Name* ptr, int (*compare)(Type*, Type*));
+void FunctionPrefix##_sort_unstable_by(Name* ptr, int (*compare)(Type*, Type*)); \
+void FunctionPrefix##_destroy_with(Name* ptr, void (*destructor)(Type* x));
 
 #define MONOVEC_DEFINITIONS(Type, Name, FunctionPrefix) \
 Name* FunctionPrefix##_construct(size_t capacity) { \

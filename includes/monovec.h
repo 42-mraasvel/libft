@@ -88,6 +88,12 @@ void FunctionPrefix##_destroy(Name* ptr) { \
 	free(ptr); \
 } \
 \
+void FunctionPrefix##_destroy_with(Name* ptr, void (*destructor)(Type* x)) { \
+	for (size_t i = 0; i < ptr->length; i++) { \
+		destructor(&ptr->table[i]); \
+	} \
+} \
+\
 MONO_QUICKSORT_DEFINITION(Type, FunctionPrefix) \
 \
 /* Comparison function: int compare(const Type* a, const Type* b); (See monoquicksort.h for details) */ \

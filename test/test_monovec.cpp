@@ -155,3 +155,21 @@ TEST_CASE("monovec sort property", "[gen]") {
 		REQUIRE(numbers == vector<int> { v->table, v->table + v->length });
 	}
 }
+
+MONOVEC_DECLARATION(void*, VecVoid, vecvoid);
+MONOVEC_DEFINITIONS(void*, VecVoid, vecvoid);
+
+static int destroy_count = 0;
+
+TEST_CASE("monovec destructor", "[destroy_with]") {
+	VecVoid* v = vecvoid_construct(0);
+	REQUIRE(v);
+	vecvoid_push_back(v, malloc(1));
+	vecvoid_push_back(v, malloc(5));
+	vecvoid_push_back(v, malloc(25));
+	vecvoid_destroy_with(v, [](void** x) {
+		destroy_count++;
+		free(*x);
+	});
+	REQUIRE(destroy_count == 3);
+}

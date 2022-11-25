@@ -3,6 +3,7 @@ add_executable(${NAME}
 	main.cpp
 	test_monovec.cpp
   test_quicksort.cpp
+  test_string.cpp
 )
 
 target_link_libraries(${NAME} PUBLIC ft)

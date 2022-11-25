@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2022/11/24 11:00:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2022/11/25 11:49:54 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include "monovec.h"
+# include "ft_string.h"
 # include <stddef.h>
 # include <unistd.h>
 # include <stdbool.h>

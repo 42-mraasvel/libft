@@ -1,90 +1,90 @@
 set(NAME ft)
 add_library(${NAME} STATIC
-./mandatory/recoded/ft_isdigit.c
-./mandatory/recoded/ft_strrchr.c
-./mandatory/recoded/ft_memset.c
-./mandatory/recoded/ft_strdup.c
-./mandatory/recoded/ft_strchr.c
-./mandatory/recoded/ft_memcmp.c
-./mandatory/recoded/ft_isalnum.c
-./mandatory/recoded/ft_isprint.c
-./mandatory/recoded/ft_strncmp.c
-./mandatory/recoded/ft_bzero.c
-./mandatory/recoded/ft_strlcpy.c
-./mandatory/recoded/ft_atoi.c
-./mandatory/recoded/ft_isascii.c
-./mandatory/recoded/ft_isalpha.c
-./mandatory/recoded/ft_strlcat.c
-./mandatory/recoded/ft_toupper.c
-./mandatory/recoded/ft_memmove.c
-./mandatory/recoded/ft_memchr.c
-./mandatory/recoded/ft_tolower.c
-./mandatory/recoded/ft_strlen.c
-./mandatory/recoded/ft_memcpy.c
-./mandatory/recoded/ft_calloc.c
-./mandatory/recoded/ft_strnstr.c
-./mandatory/additional/ft_putchar_fd.c
-./mandatory/additional/ft_strmapi.c
-./mandatory/additional/ft_split.c
-./mandatory/additional/ft_putstr_fd.c
-./mandatory/additional/ft_strtrim.c
-./mandatory/additional/ft_strjoin.c
-./mandatory/additional/ft_substr.c
-./mandatory/additional/ft_itoa.c
-./mandatory/additional/ft_striteri.c
-./mandatory/additional/ft_putnbr_fd.c
-./mandatory/additional/ft_putendl_fd.c
-./extra/find_first_not_of.c
-./extra/ft_split_token.c
-./extra/ft_numlen_base.c
-./extra/ft_strcpy.c
-./extra/ft_getline.c
-./extra/ft_swap_ptr.c
-./extra/ft_llutoa.c
-./extra/ft_numlen_double.c
-./extra/ft_unumlen_base.c
-./extra/ft_putstr_p.c
-./extra/find_first_of.c
-./extra/ft_atoull.c
-./extra/ft_split_set.c
-./extra/ft_putllu.c
-./extra/ft_fmax.c
-./extra/ft_putstr.c
-./extra/ft_putll.c
-./extra/ft_strcase.c
-./extra/ft_putllu_base.c
-./extra/ft_count_strings.c
-./extra/ft_inrange.c
-./extra/put_area_in_bin.c
-./extra/ft_strcmp.c
-./extra/ft_strchri.c
-./extra/ft_fmin.c
-./extra/ft_pow.c
-./extra/ft_abs.c
-./extra/ft_join_n_strings.c
-./extra/ft_putnofc.c
-./extra/ft_atof.c
-./extra/ft_dbl_tenthpow.c
-./extra/ft_free_split.c
-./extra/ft_strstr.c
-./extra/ft_max.c
-./extra/ft_string.c
-./extra/ft_isspace.c
-./extra/ft_atoull_base.c
-./extra/ft_free.c
-./extra/ft_min.c
-./extra/ft_strtoll.c
-./extra/ft_memccpy.c
-./bonus/ft_lstclear.c
-./bonus/ft_lstiter.c
-./bonus/ft_lstadd_back.c
-./bonus/ft_lstmap.c
-./bonus/ft_lstdelone.c
-./bonus/ft_lstlast.c
-./bonus/ft_lstadd_front.c
-./bonus/ft_lstnew.c
-./bonus/ft_lstsize.c
-
+	./advanced/ft_string.c
+	./mandatory/recoded/ft_isdigit.c
+	./mandatory/recoded/ft_strrchr.c
+	./mandatory/recoded/ft_memset.c
+	./mandatory/recoded/ft_strdup.c
+	./mandatory/recoded/ft_strchr.c
+	./mandatory/recoded/ft_memcmp.c
+	./mandatory/recoded/ft_isalnum.c
+	./mandatory/recoded/ft_isprint.c
+	./mandatory/recoded/ft_strncmp.c
+	./mandatory/recoded/ft_bzero.c
+	./mandatory/recoded/ft_strlcpy.c
+	./mandatory/recoded/ft_atoi.c
+	./mandatory/recoded/ft_isascii.c
+	./mandatory/recoded/ft_isalpha.c
+	./mandatory/recoded/ft_strlcat.c
+	./mandatory/recoded/ft_toupper.c
+	./mandatory/recoded/ft_memmove.c
+	./mandatory/recoded/ft_memchr.c
+	./mandatory/recoded/ft_tolower.c
+	./mandatory/recoded/ft_strlen.c
+	./mandatory/recoded/ft_memcpy.c
+	./mandatory/recoded/ft_calloc.c
+	./mandatory/recoded/ft_strnstr.c
+	./mandatory/additional/ft_putchar_fd.c
+	./mandatory/additional/ft_strmapi.c
+	./mandatory/additional/ft_split.c
+	./mandatory/additional/ft_putstr_fd.c
+	./mandatory/additional/ft_strtrim.c
+	./mandatory/additional/ft_strjoin.c
+	./mandatory/additional/ft_substr.c
+	./mandatory/additional/ft_itoa.c
+	./mandatory/additional/ft_striteri.c
+	./mandatory/additional/ft_putnbr_fd.c
+	./mandatory/additional/ft_putendl_fd.c
+	./extra/find_first_not_of.c
+	./extra/ft_split_token.c
+	./extra/ft_numlen_base.c
+	./extra/ft_strcpy.c
+	./extra/ft_getline.c
+	./extra/ft_swap_ptr.c
+	./extra/ft_llutoa.c
+	./extra/ft_numlen_double.c
+	./extra/ft_unumlen_base.c
+	./extra/ft_putstr_p.c
+	./extra/find_first_of.c
+	./extra/ft_atoull.c
+	./extra/ft_split_set.c
+	./extra/ft_putllu.c
+	./extra/ft_fmax.c
+	./extra/ft_putstr.c
+	./extra/ft_putll.c
+	./extra/ft_strcase.c
+	./extra/ft_putllu_base.c
+	./extra/ft_count_strings.c
+	./extra/ft_inrange.c
+	./extra/put_area_in_bin.c
+	./extra/ft_strcmp.c
+	./extra/ft_strchri.c
+	./extra/ft_fmin.c
+	./extra/ft_pow.c
+	./extra/ft_abs.c
+	./extra/ft_join_n_strings.c
+	./extra/ft_putnofc.c
+	./extra/ft_atof.c
+	./extra/ft_dbl_tenthpow.c
+	./extra/ft_free_split.c
+	./extra/ft_strstr.c
+	./extra/ft_max.c
+	./extra/ft_string.c
+	./extra/ft_isspace.c
+	./extra/ft_atoull_base.c
+	./extra/ft_free.c
+	./extra/ft_min.c
+	./extra/ft_strtoll.c
+	./extra/ft_memccpy.c
+	./bonus/ft_lstclear.c
+	./bonus/ft_lstiter.c
+	./bonus/ft_lstadd_back.c
+	./bonus/ft_lstmap.c
+	./bonus/ft_lstdelone.c
+	./bonus/ft_lstlast.c
+	./bonus/ft_lstadd_front.c
+	./bonus/ft_lstnew.c
+	./bonus/ft_lstsize.c
 )
 
 target_include_directories(${NAME} PUBLIC "../includes")

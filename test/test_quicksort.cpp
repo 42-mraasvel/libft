@@ -36,3 +36,24 @@ TEST_CASE("monoquicksort string basic", "[quicksort]") {
 	vector<string> v { table, table + sz };
 	REQUIRE(std::is_sorted(v.begin(), v.end()));
 }
+
+TEST_CASE("file sorting", "[quicksort]") {
+	const char* table[] = {
+		"1",
+		"cmakelists.txt",
+		"makefile",
+		"debug",
+		"examples",
+		"include",
+		"lib",
+		"libft",
+		"src",
+		"test"
+	};
+	int sz = (int)(sizeof(table) / sizeof(char*));
+	string_quicksort_by(table, table + sz, [](const char** a, const char** b) {
+		return(strcmp(*a, *b)); }
+	);
+	vector<string> v = {table, table + sz};
+	REQUIRE(std::is_sorted(v.begin(), v.end()));\
+}

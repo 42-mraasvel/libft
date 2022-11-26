@@ -90,9 +90,13 @@ void FunctionPrefix##_destroy(Name* ptr) { \
 } \
 \
 void FunctionPrefix##_destroy_with(Name* ptr, void (*destructor)(Type* x)) { \
+	if (!ptr) { \
+		return; \
+	} \
 	for (size_t i = 0; i < ptr->length; i++) { \
 		destructor(&ptr->table[i]); \
 	} \
+	FunctionPrefix##_destroy(ptr); \
 } \
 \
 MONO_QUICKSORT_DEFINITION(Type, FunctionPrefix) \

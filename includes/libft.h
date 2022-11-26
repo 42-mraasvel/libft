@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2022/11/25 11:49:54 by mraasvel      ########   odam.nl         */
+/*   Updated: 2022/11/26 10:18:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,6 @@ More utility functions
 char				*find_first_not_of(char *s, int (*is_function)(int));
 char				*find_first_of(char *s, int (*is_function)(int));
 bool ft_starts_with(const char* str, const char* s);
+int ft_strcmp_ignore_case(const char* a, const char* b);
 
 #endif

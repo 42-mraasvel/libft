@@ -34,11 +34,11 @@ char* string_cstr(String* str) {
 	return str->chars->table;
 }
 
-static int handle_conversion(String* str, const char* fmt, va_list ap) {
+static int handle_conversion(String* str, const char* fmt, va_list* ap) {
 	if (*fmt != 's') {
 		return -1;
 	}
-	char* s = va_arg(ap, char*);
+	char* s = va_arg(*ap, char*);
 	for (int i = 0; s[i] != '\0'; i++) {
 		if (string_push_back(str, s[i]) == -1) {
 			return -1;
@@ -71,7 +71,7 @@ String* string_format(const char* fmt, ...) {
 				if (string_push_back(str, '%') == -1) {
 					goto ERROR;
 				}
-			} else if (handle_conversion(str, fmt + i, ap) == -1) {
+			} else if (handle_conversion(str, fmt + i, &ap) == -1) {
 				goto ERROR;
 			}
 		} else {

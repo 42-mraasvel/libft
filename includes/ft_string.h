@@ -10,6 +10,7 @@ typedef struct String {
 } String;
 
 String* string_format(const char* fmt, ...);
+String* string_from(const char* src);
 void string_destroy(String* str);
 int string_push_back(String* str, char ch);
 String* string_new(size_t capacity);

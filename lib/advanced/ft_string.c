@@ -1,4 +1,5 @@
 #include "ft_string.h"
+#include "libft.h"
 #include <stdarg.h>
 
 String* string_new(size_t capacity) {
@@ -11,6 +12,17 @@ String* string_new(size_t capacity) {
 		free(s);
 		return NULL;
 	}
+	return s;
+}
+
+String* string_from(const char* src) {
+	size_t len = ft_strlen(src) + 1;
+	String* s = string_new(len);
+	if (!s) {
+		return NULL;
+	}
+	ft_memcpy(s->chars->table, src, len);
+	s->chars->length = len;
 	return s;
 }
 

@@ -28,3 +28,11 @@ TEST_CASE("string char conversion", "[string]") {
 	REQUIRE(string_length(s) == expected.size());
 	string_destroy(s);
 }
+
+TEST_CASE("string precision", "[string]") {
+	String* s = string_format("%.2s", "abcde");
+	std::string expected("ab");
+	REQUIRE(expected == s->chars->table);
+	REQUIRE(expected.size() == string_length(s));
+	string_destroy(s);
+}

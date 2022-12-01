@@ -4,19 +4,40 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-typedef int (*ConversionFunction)(String*, va_list*);
+typedef struct FormatFlags {
+	int precision;
+	char modifiers[2];
+} FormatFlags;
 
-static int string_conversion(String* str, va_list* ap) {
-	char* s = va_arg(*ap, char*);
-	return string_push_cstr(str, s);
+FormatFlags formatflags_init() {
+	FormatFlags flags;
+	flags.precision = -1;
+	return flags;
 }
 
-static int char_conversion(String* str, va_list* ap) {
+typedef int (*ConversionFunction)(String*, va_list*, FormatFlags*);
+
+static int string_conversion(String* str, va_list* ap, FormatFlags* flags) {
+	char* s = va_arg(*ap, char*);
+	if (flags->precision == -1) {
+		return string_push_cstr(str, s);
+	}
+	for (int i = 0; i < flags->precision && s[i] != '\0'; i++) {
+		if (string_push_back(str, s[i]) == -1) {
+			return -1;
+		}
+	}
+	return 0;
+}
+
+static int char_conversion(String* str, va_list* ap, FormatFlags* flags) {
+	(void)flags;
 	int ch = va_arg(*ap, int);
 	return string_push_back(str, ch);
 }
 
-static int int_conversion(String* str, va_list* ap) {
+static int int_conversion(String* str, va_list* ap, FormatFlags* flags) {
+	(void)flags;
 	int n = va_arg(*ap, int);
 	char* s = ft_itoa(n);
 	if (!s) {
@@ -27,7 +48,7 @@ static int int_conversion(String* str, va_list* ap) {
 	return result;
 }
 
-static int conversion_dispatch(String* str, va_list* ap, int ch) {
+static int conversion_dispatch(String* str, va_list* ap, int ch, FormatFlags* flags) {
 	static const ConversionFunction conversions[255] = {
 		['s'] = string_conversion,
 		['c'] = char_conversion,
@@ -38,15 +59,42 @@ static int conversion_dispatch(String* str, va_list* ap, int ch) {
 		fprintf(stderr, "conversion not supported: %c\n", ch);
 		return -1;
 	}
-	return (conversions[ch])(str, ap);
+	return (conversions[ch])(str, ap, flags);
 }
 
-static int handle_conversion(String* str, const char* fmt, va_list* ap) {
-	return conversion_dispatch(str, ap, *fmt);
+static void skip_number(const char** s) {
+	if (**s == '-' || **s == '+') {
+		*s += 1;
+	}
+	while (ft_isdigit(**s)) {
+		*s += 1;
+	}
+}
+
+static int parse_flags(const char** fmt, FormatFlags* flags) {
+	if (**fmt == '.') {
+		// precision
+		*fmt += 1;
+		flags->precision = ft_atoi(*fmt);
+		skip_number(fmt);
+	}
+	return 0;
+}
+
+static int handle_conversion(String* str, const char** fmt, va_list* ap) {
+	FormatFlags flags = formatflags_init();
+	if (parse_flags(fmt, &flags) == -1) {
+		return -1;
+	}
+	int result = conversion_dispatch(str, ap, **fmt, &flags);
+	*fmt += 1;
+	return result;
 }
 
 /**
  * @brief returns a String object for the given format string
+ * 
+ * Precision: `%.NUMBER` only works for STRING conversion
  * 
  * @param fmt format string
  * @param ... conversion arguments
@@ -59,19 +107,19 @@ String* string_format(const char* fmt, ...) {
 	}
 	va_list ap;
 	va_start(ap, fmt);
-	for (int i = 0; fmt[i] != '\0'; i++) {
-		if (fmt[i] == '%') {
-			i += 1;
-			if (fmt[i] == '\0') {
-				// invalid format string: program is considered invalid so abort
+	while (*fmt != '\0') {
+		if (*fmt == '%') {
+			fmt += 1;
+			if (*fmt == '\0') {
 				abort();
-			} else if (handle_conversion(str, fmt + i, &ap) == -1) {
+			} else if (handle_conversion(str, &fmt, &ap) == -1) {
 				goto ERROR;
 			}
 		} else {
-			if (string_push_back(str, fmt[i]) == -1) {
+			if (string_push_back(str, *fmt) == -1) {
 				goto ERROR;
 			}
+			fmt += 1;
 		}
 	}
 	va_end(ap);

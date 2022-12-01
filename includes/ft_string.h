@@ -16,5 +16,6 @@ int string_push_back(String* str, char ch);
 String* string_new(size_t capacity);
 size_t string_length(String* str);
 char* string_cstr(String* str);
+int string_push_cstr(String* str, const char* c_str);
 
 #endif /* FT_STRING_H */

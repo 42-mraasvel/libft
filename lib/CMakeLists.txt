@@ -86,6 +86,7 @@ add_library(${NAME} STATIC
 	./bonus/ft_lstnew.c
 	./bonus/ft_lstsize.c
 	./advanced/ft_strcmp_ignore_case.c
+	./advanced/ft_string_format.c
 )
 
 target_include_directories(${NAME} PUBLIC "../includes")

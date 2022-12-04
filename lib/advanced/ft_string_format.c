@@ -91,6 +91,33 @@ static int handle_conversion(String* str, const char** fmt, va_list* ap) {
 	return result;
 }
 
+static String* do_string_format(const char* fmt, va_list* ap) {
+	String* str = string_new(0);
+	if (str == NULL) {
+		return NULL;
+	}
+	while (*fmt != '\0') {
+		if (*fmt == '%') {
+			fmt += 1;
+			if (*fmt == '\0') {
+				abort();
+			} else if (handle_conversion(str, &fmt, ap) == -1) {
+				goto ERROR;
+			}
+		} else {
+			if (string_push_back(str, *fmt) == -1) {
+				goto ERROR;
+			}
+			fmt += 1;
+		}
+	}
+	return str;
+ERROR:
+	string_destroy(str);
+	return NULL;
+
+}
+
 /**
  * @brief returns a String object for the given format string
  * 
@@ -101,31 +128,23 @@ static int handle_conversion(String* str, const char** fmt, va_list* ap) {
  * @return String 
  */
 String* string_format(const char* fmt, ...) {
-	String* str = string_new(0);
-	if (str == NULL) {
-		return NULL;
-	}
 	va_list ap;
 	va_start(ap, fmt);
-	while (*fmt != '\0') {
-		if (*fmt == '%') {
-			fmt += 1;
-			if (*fmt == '\0') {
-				abort();
-			} else if (handle_conversion(str, &fmt, &ap) == -1) {
-				goto ERROR;
-			}
-		} else {
-			if (string_push_back(str, *fmt) == -1) {
-				goto ERROR;
-			}
-			fmt += 1;
-		}
+	String* s = do_string_format(fmt, &ap);
+	va_end(ap);
+	return s;
+}
+
+char* cstr_format(const char* fmt, ...) {
+	va_list ap;
+	va_start(ap, fmt);
+	String* s = do_string_format(fmt, &ap);
+	va_end(ap);
+	if (!s) {
+		return NULL;
 	}
-	va_end(ap);
-	return str;
-ERROR:
-	string_destroy(str);
-	va_end(ap);
-	return NULL;
+	char* cstr = s->chars->table;
+	s->chars->table = NULL;
+	string_destroy(s);
+	return cstr;
 }
